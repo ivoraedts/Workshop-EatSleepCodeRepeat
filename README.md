@@ -57,4 +57,4 @@ Use the input from Lab 4 to refactor the code of an open-source system:
 * Create a pull request (WARNING: Only create pull requests to the BetterCodeHub fork and not to real projects, otherwise we will not be able to track your change).
 
 
-
+[![BCH compliancy](http://bettercodehub.com/edge/badge/ivoraedts/Workshop-EatSleepCodeRepeat)](https://bettercodehub.com) 
