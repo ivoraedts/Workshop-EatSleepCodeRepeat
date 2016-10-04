@@ -5,6 +5,16 @@ namespace eu.sig.training.ch05.boardpanel.v1
 {
     public class BoardPanel
     {
+        public class BoardPanelRenderInput
+        {
+            public Square square { get; set; }
+            public Graphics g { get; set; }
+            public int x { get; set; }
+            public int y { get; set; }
+            public int w { get; set; }
+            public int h { get; set; }
+        }
+
         // tag::render[]
         /// <summary>
         /// Renders a single square on the given graphics context on the specified
@@ -16,17 +26,17 @@ namespace eu.sig.training.ch05.boardpanel.v1
         /// <param name="y">The y position to start drawing.</param>
         /// <param name="w">The width of this square (in pixels.)</param>
         /// <param name="h">The height of this square (in pixels.)</param>
-        private void Render(Square square, Graphics g, int x, int y, int w, int h)
+        private void Render(BoardPanelRenderInput input)
         {
-            square.Sprite.Draw(g, x, y, w, h);
-            foreach (Unit unit in square.Occupants)
+            input.square.Sprite.Draw(input.g, input.x, input.y, input.w, input.h);
+            foreach (Unit unit in input.square.Occupants)
             {
-                unit.Sprite.Draw(g, x, y, w, h);
+                unit.Sprite.Draw(input.g, input.x, input.y, input.w, input.h);
             }
         }
         // end::render[]
 
-        private class Sprite
+        public class Sprite
         {
             public void Draw(Graphics g, int x, int y, int w, int h)
             {
@@ -34,12 +44,12 @@ namespace eu.sig.training.ch05.boardpanel.v1
             }
         }
 
-        private class Unit
+        public class Unit
         {
             public Sprite Sprite { get; set; }
         }
 
-        private class Square : Unit
+        public class Square : Unit
         {
 
             public IList<Unit> Occupants { get; set; }
